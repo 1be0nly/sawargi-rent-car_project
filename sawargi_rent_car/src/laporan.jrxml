@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1bb43790-62bc-4d69-bdf7-d796889cf827">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Awal" class="java.lang.String"/>
+	<parameter name="Akhir" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 
+        tb_kembali.`id_trans` AS id,
+        tb_kembali.`Nama` AS nama,
+        tb_kembali.`Kendaraan` AS kendaraan,
+        tb_kembali.`Nopol` AS nopol,
+        tb_kembali.`Supir` AS supir,
+        tb_kembali.`Tgl_sewa` AS sewa,
+        tb_kembali.`Tgl_kembali` AS kembali,
+        tb_kembali.`Jum_hari` AS Jum,
+        tb_kembali.`Total` AS total
+FROM
+   `tb_kembali` tb_kembali
+         Where Tgl_sewa and Tgl_kembali between $P{Awal} and $P{Akhir}]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="kendaraan" class="java.lang.String"/>
+	<field name="nopol" class="java.lang.String"/>
+	<field name="supir" class="java.lang.String"/>
+	<field name="sewa" class="java.lang.String"/>
+	<field name="kembali" class="java.lang.String"/>
+	<field name="Jum" class="java.lang.Integer"/>
+	<field name="total" class="java.lang.Integer"/>
+	<background>
+		<band height="555" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement uuid="835f1b22-b7bf-4828-b383-50ef06653955" mode="Opaque" x="0" y="-19" width="802" height="89" backcolor="#FFFFFF"/>
+				<staticText>
+					<reportElement uuid="ede7f6e3-cde1-4eda-96d9-5ad3437a27c7" style="Title" x="216" y="0" width="370" height="89" forecolor="#000000" backcolor="#000000"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Black" size="36" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Sawargi Rent Car]]></text>
+				</staticText>
+				<image>
+					<reportElement uuid="396938c9-bc0a-4f65-a6a5-f606e2dda2d5" x="27" y="2" width="149" height="87"/>
+					<imageExpression><![CDATA["C:\\Users\\Administrator\\Documents\\Kuliah\\Algo\\Algo2\\Java\\sawargi_rent_car\\src\\IMAGES\\istockphoto-1290071290-612x612.jpg"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement uuid="40e6e598-24b6-4dfc-b4ae-f2bbf1927dba" mode="Opaque" x="0" y="70" width="802" height="32" forecolor="#000000" backcolor="#99CCFF"/>
+				<staticText>
+					<reportElement uuid="6338042b-096e-4be0-872d-680eb87cb170" style="SubTitle" x="243" y="2" width="316" height="29" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font fontName="Segoe UI Black" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Laporan Transaksi]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="70706e2b-1b16-4efe-9f69-37b318d003cd" style="Column header" x="0" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ID trans]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9129cee7-ebf6-4f24-854f-2c738a0d1cd7" style="Column header" x="88" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8aac0b4b-3c77-4cfe-b437-9900f7655fa6" style="Column header" x="176" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kendaraan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d0351fd-ec3b-49a0-9bfb-c8b0ed13d614" style="Column header" x="264" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nopol]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a74a001-bd2e-4baa-80be-926ed411e17b" style="Column header" x="352" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Supir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4bd9e511-41e9-43ae-bc90-6931a88afbb1" style="Column header" x="440" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tgl sewa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0248417e-0154-4669-9961-30a5f90ff93d" style="Column header" x="528" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tgl kembali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="522c3309-cf24-41cd-ba43-896f2d0a20ed" style="Column header" x="616" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jumlah hari]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f63c04a-59ff-4dfa-bfa1-5c32d1c9d079" style="Column header" x="704" y="0" width="88" height="18" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Segoe UI Historic" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="ffee56a8-6c89-4673-a353-136d63adf50f" style="Row" mode="Opaque" x="0" y="0" width="802" height="18"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="d025c447-a8c7-4fde-b243-6a8f3121a3d8" style="Detail" positionType="Float" x="0" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="cab8df23-486c-4e4c-8dfc-0673e9279cea" style="Detail" positionType="Float" x="88" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="ab359ca3-b958-4ae5-a2d1-2b17e7e79283" style="Detail" positionType="Float" x="176" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{kendaraan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="43a5b4f1-78c7-4b98-9a23-27a371be4609" style="Detail" positionType="Float" x="264" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nopol}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="0cf188be-c1f4-4910-a668-0eab6959d5c2" style="Detail" positionType="Float" x="352" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{supir}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="29657a11-ba59-4b8f-b581-b2e27e3a1b4d" style="Detail" positionType="Float" x="440" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sewa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="bc6a65b6-2f22-438b-a1e7-b9179cce6673" style="Detail" positionType="Float" x="528" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{kembali}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="a624abb8-5a66-48d8-a575-764ee4164eee" style="Detail" positionType="Float" x="616" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Jum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="e7a69fd1-6bdf-4fd3-b28b-987228ca2a66" style="Detail" positionType="Float" x="704" y="0" width="88" height="18"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement uuid="4cff4258-1cc3-42c3-b0e7-4d20b04fa99d" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="7453a4fb-71cf-48fe-ae71-f7e81fdbe2b1" mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#99CCFF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="42296db5-1b79-403c-86b3-825b21cd1e98" style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="9b49f212-193a-48da-a500-2ec6049491cf" style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="17667964-916f-4275-8778-c6cd37953a87" style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
